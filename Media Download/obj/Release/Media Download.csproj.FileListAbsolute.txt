@@ -1,0 +1,77 @@
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Dependencies\ffmpeg.exe
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Dependencies\ffplay.exe
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Dependencies\ffprobe.exe
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Dependencies\youtube-dl.exe
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Media Download.exe.config
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Media Download.exe
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Media Download.pdb
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\ControlzEx.dll
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.dll
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.IconPacks.Material.dll
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Microsoft.WindowsAPICodePack.dll
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\System.Windows.Interactivity.dll
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\ControlzEx.pdb
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.pdb
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.xml
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.IconPacks.Material.pdb
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.IconPacks.Material.xml
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Microsoft.WindowsAPICodePack.xml
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Resources\Icons.baml
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Resources\IconsNonShared.baml
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\MainWindow.g.cs
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\App.g.cs
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download_Content.g.cs
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download_MarkupCompile.cache
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download_MarkupCompile.lref
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\App.baml
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\MainWindow.baml
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.g.resources
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media_Download.Properties.Resources.resources
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.csproj.GenerateResource.Cache
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.csproj.CoreCompileInputs.cache
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.exe
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.pdb
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.csprojResolveAssemblyReference.cache
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Dependencies\LICENSE_FFMPEG.txt
+C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Dependencies\LICENSE_YOUTUBE-DL.txt
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Dependencies\ffmpeg.exe
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Dependencies\ffplay.exe
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Dependencies\ffprobe.exe
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Dependencies\LICENSE_FFMPEG.txt
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Dependencies\LICENSE_YOUTUBE-DL.txt
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Dependencies\youtube-dl.exe
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Media Download.exe.config
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Media Download.exe
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Media Download.pdb
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\ControlzEx.dll
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.dll
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.IconPacks.Material.dll
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Microsoft.WindowsAPICodePack.dll
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Microsoft.WindowsAPICodePack.Shell.dll
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\System.Windows.Interactivity.dll
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\ControlzEx.pdb
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.pdb
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.xml
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.IconPacks.Material.pdb
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.IconPacks.Material.xml
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Microsoft.WindowsAPICodePack.xml
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Release\Microsoft.WindowsAPICodePack.Shell.xml
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.csprojAssemblyReference.cache
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Resources\Icons.baml
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Resources\IconsNonShared.baml
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\MainWindow.g.cs
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\App.g.cs
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download_Content.g.cs
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download_MarkupCompile.cache
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download_MarkupCompile.lref
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\App.baml
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\MainWindow.baml
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.g.resources
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media_Download.Properties.Resources.resources
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.csproj.GenerateResource.cache
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.csproj.CoreCompileInputs.cache
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.csproj.CopyComplete
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.exe
+E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.pdb

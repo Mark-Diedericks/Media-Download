@@ -1,0 +1,325 @@
+﻿<Controls:MetroWindow x:Class="Media_Download.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:properties="clr-namespace:Media_Download.Properties"
+        xmlns:local="clr-namespace:Media_Download"
+        mc:Ignorable="d"
+        Title="Media Download" Height="210" Width="512" Closing="MetroWindow_Closing" ResizeMode="CanMinimize" ShowMaxRestoreButton="False" ShowIconOnTitleBar="False">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+
+                <!-- accent resource -->
+                <!-- change "Cobalt" to the accent color you want -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Cobalt.xaml" />
+
+                <!-- theme resource -->
+                <!-- change "BaseLight" to the theme you want -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="SettingsButtonStyle" TargetType="ToggleButton">
+                <Setter Property="SnapsToDevicePixels" Value="true" />
+                <Setter Property="OverridesDefaultStyle" Value="true" />
+                <Setter Property="MinHeight" Value="29px" />
+                <Setter Property="MinWidth"  Value="103px" />
+                <Setter Property="Foreground" Value="#FFFFFFFF" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Grid x:Name="Grid" Background="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Name="Column" Width="0"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Rectangle x:Name="Rectangle" Fill="Transparent" Grid.Column="0" Margin="0,8,0,8" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+
+                                <Border x:Name="Border" Grid.Column="1" TextBlock.Foreground="Black" Background="Transparent">
+                                    <ContentPresenter Margin="12,2,12,2" HorizontalAlignment="Left" VerticalAlignment="Center" RecognizesAccessKey="True" />
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="Grid" Property="Background" Value="#22808080"/>
+                                    <Setter TargetName="Column" Property="Width" Value="2"/>
+                                    <Setter TargetName="Rectangle" Property="Margin" Value="0,8,0,8"/>
+                                    <Setter TargetName="Rectangle" Property="Fill" Value="{StaticResource AccentColorBrush3}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter TargetName="Grid" Property="Background" Value="#44808080"/>
+                                    <Setter TargetName="Column" Property="Width" Value="2"/>
+                                    <Setter TargetName="Rectangle" Property="Margin" Value="0,6,0,6"/>
+                                    <Setter TargetName="Rectangle" Property="Fill" Value="{StaticResource AccentColorBrush2}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="btnSettings" Click="btnSettings_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="16" Height="16" Margin="2,2,2,2" Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=Settings}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl>
+            <Controls:Flyout x:Name="flyoutSettings" Header="Settings" Position="Right" Width="512" Theme="Adapt" BorderThickness="0,0,0,0" BorderBrush="Transparent">
+                <Grid Margin="1,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition MinWidth="144" Width="144" MaxWidth="160"/>
+                        <ColumnDefinition MinWidth="1" Width="1" MaxWidth="1"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid FlowDirection="LeftToRight" Grid.Column="0">
+                        <!-- TABS -->
+                        <ToggleButton x:Name="btnSettingsDefault" Click="btnSettingsDefault_Click" Margin="0,8,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Stretch" Style="{StaticResource SettingsButtonStyle}">
+                            <Grid Margin="0,0,0,0">
+                                <TextBlock VerticalAlignment="Center" Background="Transparent" Foreground="{DynamicResource TextBrush}" HorizontalAlignment="Left" Margin="24,0,0,2">Defaults</TextBlock>
+                                <Rectangle Width="16" Height="16" Fill="{DynamicResource TextBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,0,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=FormatListBulleted}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </Grid>
+                        </ToggleButton>
+
+                        <ToggleButton x:Name="btnSettingsTheme" Click="btnSettingsTheme_Click" Margin="0,48,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Stretch" Style="{StaticResource SettingsButtonStyle}">
+                            <Grid Margin="0,0,0,0">
+                                <TextBlock VerticalAlignment="Center" Background="Transparent" Foreground="{DynamicResource TextBrush}" HorizontalAlignment="Left" Margin="24,0,0,2">Themes</TextBlock>
+                                <Rectangle Width="16" Height="16" Fill="{DynamicResource TextBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,0,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=Palette}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </Grid>
+                        </ToggleButton>
+
+                        <ToggleButton x:Name="btnSettingsAbout" Click="btnSettingsAbout_Click" Margin="0,88,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Stretch" Style="{StaticResource SettingsButtonStyle}">
+                            <Grid Margin="0,0,0,0">
+                                <TextBlock VerticalAlignment="Center" Background="Transparent" Foreground="{DynamicResource TextBrush}" HorizontalAlignment="Left" Margin="24,0,0,2">About</TextBlock>
+                                <Rectangle Width="16" Height="16" Fill="{DynamicResource TextBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,0,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=InformationOutline}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </Grid>
+                        </ToggleButton>
+                    </Grid>
+
+                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Grid.Column="1" Margin="0,8,0,8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                    <Grid Grid.Column="2">
+                        <Grid x:Name="SettingsPageDefault">
+                            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0,4,0,0" TextAlignment="Center">Defaults</TextBlock>
+                            <Separator VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16,23,16,0" Height="1" Style="{DynamicResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            <Grid Margin="0,22,0,0">
+                                <TextBlock Text="Save Location:" HorizontalAlignment="Left" Margin="12,8,0,0" VerticalAlignment="Top"/>
+                                <TextBlock x:Name="lblFolderDefault" FontWeight="Medium" Text="{Binding Source={x:Static properties:Settings.Default}, Path=DefaultSaveLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" Margin="12,28,48,0" VerticalAlignment="Top"/>
+                                <Button x:Name="btnFolderDefault" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnFolderDefault_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="32" Height="32" Margin="0,22,8,0" VerticalAlignment="Top">
+                                    <Rectangle Width="10" Height="10" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=Folder}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Button>
+                            </Grid>
+
+                            <Grid Margin="0,48,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                                <RadioButton x:Name="rdbtnAudioDefault" Content="Audio (MP3)" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=TypeAudio, Mode=TwoWay}" Margin="8,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <RadioButton x:Name="rdbtnVideoDefault" Content="Video (MP4)" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=TypeVideo, Mode=TwoWay}" Margin="128,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <RadioButton x:Name="rdbtnCustomDefault" Content="Custom: " IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=TypeCustom, Mode=TwoWay}" Margin="248,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <TextBox x:Name="txtFormatDefault" Text="{Binding Source={x:Static properties:Settings.Default}, Path=TypeCustomValue, Mode=TwoWay}" Margin="8,50,48,0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                            <Style.Resources>
+                                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                                    <VisualBrush.Visual>
+                                                        <Label Content=" Custom Format" Foreground="LightGray" />
+                                                    </VisualBrush.Visual>
+                                                </VisualBrush>
+                                            </Style.Resources>
+                                            <Style.Triggers>
+                                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                                </Trigger>
+                                                <Trigger Property="Text" Value="{x:Null}">
+                                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                                </Trigger>
+                                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                                    <Setter Property="Background" Value="Transparent" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                                <Button x:Name="btnHelpDefault" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnHelp_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="32" Height="32" Margin="0,50,8,0" VerticalAlignment="Top">
+                                    <Rectangle Width="10" Height="10" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=Help}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Button>
+                            </Grid>
+                        </Grid>
+
+                        <Grid x:Name="SettingsPageTheme">
+                            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0,4,0,0" TextAlignment="Center">Themes</TextBlock>
+                            <Separator VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16,23,16,0" Height="1" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            <Grid Margin="0,24,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="144" Width="144" MaxWidth="144"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                                    <RadioButton x:Name="rdbtnThemeLight" Content="Light Theme" Checked="rdbtnThemeLight_Checked" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=ThemeLight, Mode=OneTime}" Margin="12,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <RadioButton x:Name="rdbtnThemeDark" Content="Dark Theme" Checked="rdbtnThemeDark_Checked" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=ThemeDark, Mode=OneTime}" Margin="12,52,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                                    <ListBox x:Name="SettingsThemeAccentList" SelectionChanged="SettingsThemeAccentList_SelectionChanged" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,8,8,12">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding}" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                        <Grid x:Name="SettingsPageAbout">
+                            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0,4,0,0" TextAlignment="Center">About</TextBlock>
+                            <Separator VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16,23,16,0" Height="1" Style="{DynamicResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            <Grid Margin="0,24,0,0">
+                                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Margin="12,4,0,0" FontWeight="Medium">Media Download</TextBlock>
+                                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Margin="12,22,0,0">Media downloading utility.</TextBlock>
+                                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Margin="12,40,0,0">Mark Diedericks, Copyright © 2018</TextBlock>
+
+                                <Button x:Name="btnUpdate" Click="btnUpdate_Click" Width="160" Margin="12,66,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">Check For Updates</Button>
+                                <Grid Margin="184,52,0,0">
+                                    <Rectangle x:Name="SettingsIconTick" Visibility="Hidden" Width="16" Height="16" Fill="#101010" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,0,0">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=Check}"/>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+
+                                    <Controls:ProgressRing x:Name="SettingsIconLoad" Visibility="Hidden" Width="16" Height="16" Foreground="#101010" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,0,0"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
+
+    <Grid>
+        <TextBlock Text="Save Location:" HorizontalAlignment="Left" Margin="12,12,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblFolder" FontWeight="Medium" Text="{Binding Source={x:Static properties:Settings.Default}, Path=DefaultSaveLocation, Mode=OneTime}" HorizontalAlignment="Stretch" Margin="96,12,48,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnFolder" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnFolder_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="32" Height="32" Margin="0,2,8,0" VerticalAlignment="Top">
+            <Rectangle Width="10" Height="10" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=Folder}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+
+        <Separator Style="{DynamicResource {x:Static ToolBar.SeparatorStyleKey}}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="1" Margin="0,35,0,0"/>
+        
+        <Grid Margin="0,42,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TextBox x:Name="txtLink" HorizontalAlignment="Stretch" Margin="12,14,48,0" VerticalAlignment="Top">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content=" URL" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Button x:Name="btnLinkDelete" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnLinkDelete_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="32" Height="32" Margin="0,8,8,0" VerticalAlignment="Top">
+                <Rectangle Width="10" Height="10" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=Delete}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+
+            <Grid Margin="0,48,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                <RadioButton x:Name="rdbtnAudio" Content="Audio (MP3)" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=TypeAudio, Mode=OneTime}" Margin="8,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <RadioButton x:Name="rdbtnVideo" Content="Video (MP4)" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=TypeVideo, Mode=OneTime}" Margin="112,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <RadioButton x:Name="rdbtnCustom" Content="Custom: " IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=TypeCustom, Mode=OneTime}" Margin="216,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtFormat" Text="{Binding Source={x:Static properties:Settings.Default}, Path=TypeCustomValue, Mode=OneTime}" Margin="296,0,48,0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content=" Custom Format" Foreground="LightGray" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="Transparent" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+                <Button x:Name="btnHelp" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnHelp_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="32" Height="32" Margin="0,2,8,0" VerticalAlignment="Top">
+                    <Rectangle Width="10" Height="10" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=Help}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Button>
+            </Grid>
+            
+            <Button x:Name="OK" Click="OK_Click" Content="OK" Width="96" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,8,8"/>
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>

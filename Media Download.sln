@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Media Download", "Media Download\Media Download.csproj", "{D8F90AD2-D239-444E-884B-70FDAECD5F42}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Media Download Installer", "Media Download Installer\Media Download Installer.vdproj", "{B53EC6FB-4306-48BB-AA9A-6EB757CAB853}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8F90AD2-D239-444E-884B-70FDAECD5F42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8F90AD2-D239-444E-884B-70FDAECD5F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8F90AD2-D239-444E-884B-70FDAECD5F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F90AD2-D239-444E-884B-70FDAECD5F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B53EC6FB-4306-48BB-AA9A-6EB757CAB853}.Debug|Any CPU.ActiveCfg = Debug
+		{B53EC6FB-4306-48BB-AA9A-6EB757CAB853}.Debug|Any CPU.Build.0 = Debug
+		{B53EC6FB-4306-48BB-AA9A-6EB757CAB853}.Release|Any CPU.ActiveCfg = Release
+		{B53EC6FB-4306-48BB-AA9A-6EB757CAB853}.Release|Any CPU.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5D04BDC-B23A-4EDB-8B2F-E283AD925DAD}
+	EndGlobalSection
+EndGlobal
