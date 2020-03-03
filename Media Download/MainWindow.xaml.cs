@@ -135,6 +135,8 @@ namespace Media_Download
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
+            this.btnOK.IsEnabled = false;
+
             if (Directory.Exists(lblFolder.Text))
             {
                 Uri outUri;
@@ -156,6 +158,7 @@ namespace Media_Download
                     if (!File.Exists(batfile))
                     {
                         MessageBox.Show("Could not create the download bat, try running the program as an administrator.", "Error");
+                        this.btnOK.IsEnabled = true;
                         return;
                     }
 
@@ -187,6 +190,8 @@ namespace Media_Download
             {
                 MessageBox.Show("Please select a folder to which the files will be saved.");
             }
+
+            this.btnOK.IsEnabled = true;
         }
 
         #endregion

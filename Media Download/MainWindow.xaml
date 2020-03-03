@@ -219,8 +219,8 @@
                             <Separator VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16,23,16,0" Height="1" Style="{DynamicResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             <Grid Margin="0,24,0,0">
                                 <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Margin="12,4,0,0" FontWeight="Medium">Media Download</TextBlock>
-                                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Margin="12,22,0,0">Media downloading utility.</TextBlock>
-                                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Margin="12,40,0,0">Mark Diedericks, Copyright © 2018</TextBlock>
+                                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Margin="12,22,0,0">Media downloading utility</TextBlock>
+                                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Margin="12,40,0,0">Mark Diedericks, Copyright © 2020</TextBlock>
 
                                 <Button x:Name="btnUpdate" Click="btnUpdate_Click" Width="160" Margin="12,66,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">Check For Updates</Button>
                                 <Grid Margin="184,52,0,0">
@@ -323,7 +323,7 @@
                 </Button>
             </Grid>
             
-            <Button x:Name="OK" Click="OK_Click" Content="OK" Width="96" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,8,8"/>
+            <Button x:Name="btnOK" Click="OK_Click" Content="OK" Width="96" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,8,8"/>
         </Grid>
     </Grid>
 </Controls:MetroWindow>
