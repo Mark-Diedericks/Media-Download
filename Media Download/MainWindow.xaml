@@ -65,6 +65,10 @@
             </Style>
         </ResourceDictionary>
     </Window.Resources>
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Paste" Executed="MetroWindow_Paste" />
+    </Window.CommandBindings>
 
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
@@ -135,8 +139,8 @@
                             <Grid Margin="0,22,0,0">
                                 <TextBlock Text="Save Location:" HorizontalAlignment="Left" Margin="12,8,0,0" VerticalAlignment="Top"/>
                                 <TextBlock x:Name="lblFolderDefault" FontWeight="Medium" Text="{Binding Source={x:Static properties:Settings.Default}, Path=DefaultSaveLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" Margin="12,28,48,0" VerticalAlignment="Top"/>
-                                <Button x:Name="btnFolderDefault" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnFolderDefault_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="32" Height="32" Margin="0,22,8,0" VerticalAlignment="Top">
-                                    <Rectangle Width="10" Height="10" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                <Button x:Name="btnFolderDefault" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnFolderDefault_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="40" Height="40" Margin="0,16,8,0" VerticalAlignment="Top">
+                                    <Rectangle Width="16" Height="16" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
                                             <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=Folder}" />
                                         </Rectangle.OpacityMask>
@@ -172,8 +176,8 @@
                                         </Style>
                                     </TextBox.Style>
                                 </TextBox>
-                                <Button x:Name="btnHelpDefault" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnHelp_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="32" Height="32" Margin="0,50,8,0" VerticalAlignment="Top">
-                                    <Rectangle Width="10" Height="10" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                <Button x:Name="btnHelpDefault" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnHelp_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="40" Height="40" Margin="0,42,8,0" VerticalAlignment="Top">
+                                    <Rectangle Width="16" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
                                             <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=Help}" />
                                         </Rectangle.OpacityMask>
@@ -236,11 +240,11 @@
         </Controls:FlyoutsControl>
     </Controls:MetroWindow.Flyouts>
 
-    <Grid>
+    <Grid>        
         <TextBlock Text="Save Location:" HorizontalAlignment="Left" Margin="12,12,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="lblFolder" FontWeight="Medium" Text="{Binding Source={x:Static properties:Settings.Default}, Path=DefaultSaveLocation, Mode=OneTime}" HorizontalAlignment="Stretch" Margin="96,12,48,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnFolder" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnFolder_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="32" Height="32" Margin="0,2,8,0" VerticalAlignment="Top">
-            <Rectangle Width="10" Height="10" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+        <Button x:Name="btnFolder" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnFolder_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="40" Height="40" Margin="0,-2,8,0" VerticalAlignment="Top">
+            <Rectangle Width="16" Height="16" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=Folder}" />
                 </Rectangle.OpacityMask>
@@ -274,10 +278,10 @@
                     </Style>
                 </TextBox.Style>
             </TextBox>
-            <Button x:Name="btnLinkDelete" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnLinkDelete_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="32" Height="32" Margin="0,8,8,0" VerticalAlignment="Top">
-                <Rectangle Width="10" Height="10" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+            <Button x:Name="btnLinkPaste" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnLinkPaste_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="40" Height="40" Margin="0,2,8,0" VerticalAlignment="Top">
+                <Rectangle Width="16" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                     <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=Delete}" />
+                        <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=ContentPaste}" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
@@ -310,8 +314,8 @@
                         </Style>
                     </TextBox.Style>
                 </TextBox>
-                <Button x:Name="btnHelp" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnHelp_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="32" Height="32" Margin="0,2,8,0" VerticalAlignment="Top">
-                    <Rectangle Width="10" Height="10" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Button x:Name="btnHelp" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnHelp_Click" Foreground="{DynamicResource AccentColorBrush}" BorderThickness="0" HorizontalAlignment="Right" Width="40" Height="40" Margin="0,-6,8,0" VerticalAlignment="Top">
+                    <Rectangle Width="16" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                         <Rectangle.OpacityMask>
                             <VisualBrush Stretch="Fill" Visual="{iconPacks:Material Kind=Help}" />
                         </Rectangle.OpacityMask>

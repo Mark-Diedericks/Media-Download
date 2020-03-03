@@ -75,3 +75,42 @@ E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Do
 E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.csproj.CopyComplete
 E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.exe
 E:\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\obj\Release\Media Download.pdb
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\Dependencies\ffmpeg.exe
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\Dependencies\ffplay.exe
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\Dependencies\ffprobe.exe
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\Dependencies\LICENSE_FFMPEG.txt
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\Dependencies\LICENSE_YOUTUBE-DL.txt
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\Dependencies\youtube-dl.exe
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\Media Download.exe.config
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\Media Download.exe
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\Media Download.pdb
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\ControlzEx.dll
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.dll
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.IconPacks.Material.dll
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\Microsoft.WindowsAPICodePack.dll
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\Microsoft.WindowsAPICodePack.Shell.dll
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\System.Windows.Interactivity.dll
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\ControlzEx.pdb
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.pdb
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.xml
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.IconPacks.Material.pdb
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\MahApps.Metro.IconPacks.Material.xml
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\Microsoft.WindowsAPICodePack.xml
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Release\Microsoft.WindowsAPICodePack.Shell.xml
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download.csprojAssemblyReference.cache
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Resources\Icons.baml
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Resources\IconsNonShared.baml
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\MainWindow.g.cs
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\App.g.cs
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download_Content.g.cs
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download_MarkupCompile.cache
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download_MarkupCompile.lref
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\App.baml
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\MainWindow.baml
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download.g.resources
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media_Download.Properties.Resources.resources
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download.csproj.GenerateResource.cache
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download.csproj.CoreCompileInputs.cache
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download.csproj.CopyComplete
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download.exe
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download.pdb

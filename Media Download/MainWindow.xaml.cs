@@ -96,14 +96,23 @@ namespace Media_Download
             Properties.Settings.Default.ThemeAccent = currentAccent.Name;
             Properties.Settings.Default.Save();
         }
+        private void MetroWindow_Paste(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focEl = Keyboard.FocusedElement;
+            if (focEl is TextBox)
+                (focEl as TextBox).Paste();
+            else
+                this.txtLink.Paste();
+        }
 
         #endregion
 
         #region MainPage
 
-        private void btnLinkDelete_Click(object sender, RoutedEventArgs e)
+        private void btnLinkPaste_Click(object sender, RoutedEventArgs e)
         {
             txtLink.Text = "";
+            txtLink.Paste();
         }
 
         private void btnFolder_Click(object sender, RoutedEventArgs e)
