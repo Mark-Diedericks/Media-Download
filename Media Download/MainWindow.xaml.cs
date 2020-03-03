@@ -100,9 +100,14 @@ namespace Media_Download
         {
             IInputElement focEl = Keyboard.FocusedElement;
             if (focEl is TextBox)
+            {
                 (focEl as TextBox).Paste();
+            }
             else
-                this.txtLink.Paste();
+            {
+                txtLink.Clear();
+                txtLink.Paste();
+            }
         }
 
         #endregion
@@ -111,7 +116,7 @@ namespace Media_Download
 
         private void btnLinkPaste_Click(object sender, RoutedEventArgs e)
         {
-            txtLink.Text = "";
+            txtLink.Clear();
             txtLink.Paste();
         }
 
