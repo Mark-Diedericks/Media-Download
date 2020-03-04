@@ -4,5 +4,5 @@
 
 /.vs/Media Download/v16/Server/sqlite3
 /.vs/Media Download/v16
-/Releases/
-/packages/
+/Releases/**
+/packages/**
