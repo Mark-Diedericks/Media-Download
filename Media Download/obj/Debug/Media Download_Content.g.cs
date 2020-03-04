@@ -9,8 +9,6 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/ffmpeg.exe")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/ffplay.exe")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/ffprobe.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/license_ffmpeg.txt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/license_youtube-dl.txt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/youtube-dl.exe")]

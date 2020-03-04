@@ -37,8 +37,6 @@ C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Me
 C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Debug\Dependencies\LICENSE_FFMPEG.txt
 C:\Users\Mark Diedericks\Documents\Visual Studio 2017\Projects\Media Download\Media Download\bin\Debug\Dependencies\LICENSE_YOUTUBE-DL.txt
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Debug\Dependencies\ffmpeg.exe
-D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Debug\Dependencies\ffplay.exe
-D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Debug\Dependencies\ffprobe.exe
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Debug\Dependencies\LICENSE_FFMPEG.txt
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Debug\Dependencies\LICENSE_YOUTUBE-DL.txt
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Debug\Dependencies\youtube-dl.exe
@@ -58,7 +56,6 @@ D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Do
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Debug\MahApps.Metro.IconPacks.Material.xml
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Debug\Microsoft.WindowsAPICodePack.xml
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
-D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Debug\Media Download.csprojAssemblyReference.cache
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Debug\Resources\Icons.baml
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Debug\Resources\IconsNonShared.baml
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Debug\MainWindow.g.cs
@@ -75,3 +72,4 @@ D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Do
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Debug\Media Download.csproj.CopyComplete
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Debug\Media Download.exe
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Debug\Media Download.pdb
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Debug\Media Download.csprojAssemblyReference.cache

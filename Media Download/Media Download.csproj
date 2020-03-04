@@ -151,12 +151,6 @@
     <Content Include="Dependencies\ffmpeg.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dependencies\ffplay.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\ffprobe.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Dependencies\LICENSE_FFMPEG.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

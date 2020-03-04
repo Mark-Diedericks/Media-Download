@@ -26,5 +26,8 @@
     <Setting Name="ThemeAccent" Type="System.String" Scope="User">
       <Value Profile="(Default)">Cobalt</Value>
     </Setting>
+    <Setting Name="ShowConsole" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

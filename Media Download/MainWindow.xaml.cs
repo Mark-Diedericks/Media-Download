@@ -41,6 +41,11 @@ namespace Media_Download
         private Accent currentAccent;
         private List<string> accents;
 
+        private HashSet<Uri> downloads;
+        private HashSet<Uri> failures;
+        private int begun_count;
+        private int ended_count;
+
         public MainWindow()
         {
             accents = new List<string>();
@@ -70,7 +75,7 @@ namespace Media_Download
 
             if (Properties.Settings.Default.DefaultSaveLocation.Count() <= 0)
             {
-                String music = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
+                string music = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
                 Properties.Settings.Default.DefaultSaveLocation = music;
                 Properties.Settings.Default.Save();
             }
@@ -89,6 +94,11 @@ namespace Media_Download
             UpdateTheme();
 
             SetActiveSettingsPage(SettingsPage.DEFAULT);
+
+            downloads = new HashSet<Uri>();
+            failures = new HashSet<Uri>();
+            begun_count = 0;
+            ended_count = 0;
         }
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -122,10 +132,12 @@ namespace Media_Download
 
         private void btnFolder_Click(object sender, RoutedEventArgs e)
         {
-            CommonOpenFileDialog cofd = new CommonOpenFileDialog();
-            cofd.IsFolderPicker = true;
-            cofd.Multiselect = false;
-            cofd.EnsurePathExists = true;
+            CommonOpenFileDialog cofd = new CommonOpenFileDialog
+            {
+                IsFolderPicker = true,
+                Multiselect = false,
+                EnsurePathExists = true
+            };
 
             if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
@@ -140,78 +152,127 @@ namespace Media_Download
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            this.btnOK.IsEnabled = false;
+            string mod = txtFormat.Text.Trim();
 
-            if (Directory.Exists(lblFolder.Text))
-            {
-                Uri outUri;
-                if (Uri.TryCreate(txtLink.Text, UriKind.Absolute, out outUri))
-                {
-                    string mod = "";
+            if (rdbtnAudio.IsChecked == true)
+                mod = "--extract-audio --audio-format mp3";
+            else if (rdbtnVideo.IsChecked == true)
+                mod = "-f \"bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4\"";
 
-                    if (rdbtnAudio.IsChecked == true)
-                        mod = "--extract-audio --audio-format mp3";
-                    else if (rdbtnVideo.IsChecked == true)
-                        mod = "-f \"bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4\"";
-                    else
-                        mod = txtFormat.Text.Trim();
+            Dispatcher.InvokeAsync(() => DownloadMediaFile(lblFolder.Text, txtLink.Text, mod, DownloadFinished));
+        }
 
-                    string savedir = lblFolder.Text + "\\";
-                    string curdir = Environment.CurrentDirectory + "\\Dependencies\\youtube-dl.exe";
-                    string batfile = CreateBatFile(savedir, curdir, mod, txtLink.Text);
+        private void txtRemain_Click(object sender, MouseButtonEventArgs e)
+        {
+            downloads.Clear();
+            failures.Clear();
+            begun_count = 0;
+            ended_count = 0;
 
-                    if (!File.Exists(batfile))
-                    {
-                        MessageBox.Show("Could not create the download bat, try running the program as an administrator.", "Error");
-                        this.btnOK.IsEnabled = true;
-                        return;
-                    }
-
-                    ProcessStartInfo cmdsi = new ProcessStartInfo
-                    {
-                        WorkingDirectory = lblFolder.Text,
-                        FileName = batfile
-                    };
-
-                    Process cmdDownload = Process.Start(cmdsi);
-                    cmdDownload.WaitForExit();
-
-                    try
-                    {
-                        File.Delete(batfile);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Could not delete the download bat file.", "Error");
-                        System.Diagnostics.Debug.WriteLine(ex.Message);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Please enter a valid URL/Link.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select a folder to which the files will be saved.");
-            }
-
-            this.btnOK.IsEnabled = true;
+            txtRemain.Text = "0 of 0";
+            txtRemain.ToolTip = "";
         }
 
         #endregion
 
         #region Helpers
 
-        private void UpdateTheme()
+        private void DownloadMediaFile(string folder, string link, string mod, Action<Uri, int> OnCompletedAction)
         {
-            if (currentAccent == null || lightTheme == null || darkTheme == null)
-                return;
+            Thread ExecutionThread = new Thread((ThreadStart)delegate
+            {
+                Uri outUri = null;
+                int exitCode = 0;
 
-            if(Properties.Settings.Default.ThemeLight)
-                ThemeManager.ChangeAppStyle(this, currentAccent, lightTheme);
-            else
-                ThemeManager.ChangeAppStyle(this, currentAccent, darkTheme);
+                if (Directory.Exists(folder))
+                {
+                    if (Uri.TryCreate(link, UriKind.Absolute, out outUri))
+                    {
+                        downloads.Add(outUri);
+                        begun_count++;
+
+                        //Update status textblock
+                        string remaining_content = string.Format("{0} of {1}", ended_count, begun_count);
+                        if (failures.Count > 0)
+                            remaining_content += string.Format(" - {0} Failed", failures.Count);
+
+                        Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() => { txtRemain.Text = remaining_content; txtRemain.Visibility = Visibility.Visible; }));
+
+                        string savedir = folder + "\\";
+                        string curdir = Environment.CurrentDirectory + "\\Dependencies\\youtube-dl.exe";
+                        string batfile = CreateBatFile(savedir, curdir, mod, link);
+
+                        if (!File.Exists(batfile))
+                        {
+                            MessageBox.Show("Could not create the download bat, try running the program as an administrator.", "Error");
+                            Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() => OnCompletedAction?.Invoke(outUri, 1)));
+                            return;
+                        }
+
+                        ProcessStartInfo cmdsi = new ProcessStartInfo
+                        {
+                            WorkingDirectory = folder,
+                            FileName = batfile
+                        };
+
+                        if (!Properties.Settings.Default.ShowConsole)
+                        {
+                            cmdsi.CreateNoWindow = true;
+                            cmdsi.WindowStyle = ProcessWindowStyle.Hidden;
+                        }
+
+                        Process cmdDownload = Process.Start(cmdsi);
+                        cmdDownload.WaitForExit();
+                        exitCode = cmdDownload.ExitCode;
+
+                        try
+                        {
+                            File.Delete(batfile);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Could not delete the download bat file.", "Error");
+                            Debug.WriteLine(ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a valid URL/Link.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a folder to which the files will be saved.");
+                }
+
+                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() => OnCompletedAction?.Invoke(outUri, exitCode)));
+            });
+
+            ExecutionThread.Start();
+        }
+        private void DownloadFinished(Uri address, int exitCode)
+        {
+            Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+            {
+                if (address is null)
+                    return;
+
+                downloads.Remove(address);
+                ended_count++;
+
+                //Validate download
+                if (exitCode != 0)
+                    failures.Add(address);
+
+                //Update status textblock
+                string remaining_content = string.Format("{0} of {1}", ended_count, begun_count);
+                if (failures.Count > 0)
+                    remaining_content += string.Format(" - {0} Failed", failures.Count);
+
+                txtRemain.Text = remaining_content;
+                txtRemain.Visibility = Visibility.Visible;
+                txtRemain.ToolTip = string.Join("\n", failures);
+            }));
         }
 
         private void UpdateYoutubeDL(Action OnCompletedAction)
@@ -225,10 +286,15 @@ namespace Media_Download
                 {
                     WorkingDirectory = wd,
                     FileName = "cmd.exe",
-                    WindowStyle = ProcessWindowStyle.Hidden,
                     Arguments = "/C \"" + curdir + "\" --update && exit",
                     Verb = "runas",
                 };
+
+                if (!Properties.Settings.Default.ShowConsole)
+                {
+                    cmdsi.CreateNoWindow = true;
+                    cmdsi.WindowStyle = ProcessWindowStyle.Hidden;
+                }
 
                 Process cmdUpdate = Process.Start(cmdsi);
                 cmdUpdate.WaitForExit();
@@ -250,13 +316,28 @@ namespace Media_Download
             }));
         }
 
+        private void UpdateTheme()
+        {
+            if (currentAccent == null || lightTheme == null || darkTheme == null)
+                return;
+
+            if (Properties.Settings.Default.ThemeLight)
+                ThemeManager.ChangeAppStyle(this, currentAccent, lightTheme);
+            else
+                ThemeManager.ChangeAppStyle(this, currentAccent, darkTheme);
+        }
+
         private string CreateBatFile(string saveDir, string appDir, string mod, string link)
         {
             StringBuilder batText = new StringBuilder();
             batText.AppendLine("cd " + "\"" + saveDir + "\"");
+            batText.AppendLine("set /a a=0");
             batText.AppendLine(":retry");
+            batText.AppendLine("set /a a=%a%+1");
             batText.AppendLine("\"" + appDir + "\"" + " -i --download-archive downloaded.txt --socket-timeout 1 --retries infinite " + mod + " -o \"%%(title)s.%%(ext)s\" " + link + " -c");
-            batText.AppendLine("IF NOT \"%ERRORLEVEL%\"==\"0\" GOTO :retry");
+            batText.AppendLine("IF %a% GEQ 10 GOTO :complete");
+            batText.AppendLine("IF %ERRORLEVEL% NEQ 0 GOTO :retry");
+            batText.AppendLine(":complete");
             batText.AppendLine("@echo COMPLETE, ERRORLEVEL = %ERRORLEVEL%");
             batText.AppendLine("exit");
 
@@ -405,5 +486,6 @@ namespace Media_Download
         #endregion
 
         #endregion
+
     }
 }
