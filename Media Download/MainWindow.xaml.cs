@@ -5,7 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Json;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,6 +30,9 @@ namespace Media_Download
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        private readonly string YOUTUBE_DL_LATEST = "http://rg3.github.io/youtube-dl/update/LATEST_VERSION";
+        private readonly string YOUTUBE_DL_README = "https://github.com/rg3/youtube-dl/blob/master/README.md";
+
         private enum SettingsPage
         {
             DEFAULT = 0,
@@ -99,6 +105,8 @@ namespace Media_Download
             failures = new HashSet<Uri>();
             begun_count = 0;
             ended_count = 0;
+
+            Dispatcher.InvokeAsync(() => VersionYoutubeDL(VersionFinished));
         }
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -147,7 +155,7 @@ namespace Media_Download
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/rg3/youtube-dl/blob/master/README.md");
+            Process.Start(YOUTUBE_DL_README);
         }
 
         private void OK_Click(object sender, RoutedEventArgs e)
@@ -171,6 +179,12 @@ namespace Media_Download
 
             txtRemain.Text = "0 of 0";
             txtRemain.ToolTip = "";
+        }
+
+        private void txtUpdates_Click(object sender, MouseButtonEventArgs e)
+        {
+            flyoutSettings.IsOpen = true;
+            SetActiveSettingsPage(SettingsPage.ABOUT);
         }
 
         #endregion
@@ -275,44 +289,110 @@ namespace Media_Download
             }));
         }
 
-        private void UpdateYoutubeDL(Action OnCompletedAction)
+        private void UpdateYoutubeDL(Action<int> OnCompletedAction)
         {
-            string curdir = Environment.CurrentDirectory + "\\Dependencies\\youtube-dl.exe";
-            string wd = lblFolder.Text;
+            string location = Environment.CurrentDirectory + "\\Dependencies\\youtube-dl.exe";
 
             Thread ExecutionThread = new Thread((ThreadStart)delegate
             {
                 ProcessStartInfo cmdsi = new ProcessStartInfo
                 {
-                    WorkingDirectory = wd,
-                    FileName = "cmd.exe",
-                    Arguments = "/C \"" + curdir + "\" --update && exit",
-                    Verb = "runas",
+                    FileName = location,
+                    Arguments = "--update",
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    WindowStyle = ProcessWindowStyle.Hidden
                 };
-
-                if (!Properties.Settings.Default.ShowConsole)
-                {
-                    cmdsi.CreateNoWindow = true;
-                    cmdsi.WindowStyle = ProcessWindowStyle.Hidden;
-                }
 
                 Process cmdUpdate = Process.Start(cmdsi);
                 cmdUpdate.WaitForExit();
 
-                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() => OnCompletedAction?.Invoke()));
+                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() => OnCompletedAction?.Invoke(cmdUpdate.ExitCode)));
             });
 
             ExecutionThread.Start();
         }
 
-        private void UpdateFinished()
+        private void UpdateFinished(int exitCode)
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
-            { 
+            {
                 SettingsIconLoad.Visibility = Visibility.Hidden;
-                SettingsIconTick.Visibility = Visibility.Visible;
-                btnUpdate.Content = "Updated";
-                btnUpdate.IsEnabled = false;
+
+                if (exitCode > 0)
+                {
+                    btnUpdate.IsEnabled = true;
+                    btnUpdate.Content = "Retry Update";
+                    SettingsIconCross.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    btnUpdate.IsEnabled = false;
+                    btnUpdate.Content = "Updated";
+                    SettingsIconTick.Visibility = Visibility.Visible;
+                    txtUpdates.Visibility = Visibility.Hidden;
+                }
+            }));
+        }
+
+        private void VersionYoutubeDL(Action<int, string, string> OnCompletedAction)
+        {
+            string location = Environment.CurrentDirectory + "\\Dependencies\\youtube-dl.exe";
+
+            Thread ExecutionThread = new Thread((ThreadStart)delegate
+            {
+                ProcessStartInfo cmdsi = new ProcessStartInfo
+                {
+                    FileName = location,
+                    Arguments = "--version",
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = true
+                };
+
+                Process cmdVersion = Process.Start(cmdsi);
+
+                StringBuilder output = new StringBuilder();
+                while (!cmdVersion.StandardOutput.EndOfStream)
+                    output.AppendLine(cmdVersion.StandardOutput.ReadLine());
+
+                string current_version = output.ToString().Trim();
+                cmdVersion.WaitForExit();
+
+
+
+                string latest_version = "";
+                try
+                {
+                    latest_version = new WebClient().DownloadString(YOUTUBE_DL_LATEST);
+                }
+                catch (Exception e)
+                {
+                    Debug.Print(e.Message);
+                }
+
+                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() => OnCompletedAction?.Invoke(cmdVersion.ExitCode, current_version, latest_version)));
+            });
+
+            ExecutionThread.Start();
+        }
+
+        private void VersionFinished(int exitCode, string current_version, string latest_version)
+        {
+            Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+            {
+                if (string.Equals(current_version.Trim(), latest_version.Trim(), StringComparison.OrdinalIgnoreCase))
+                {
+                    txtUpdates.Visibility = Visibility.Hidden;
+                    SettingsIconTick.Visibility = Visibility.Visible;
+                    btnUpdate.Content = "Force Update";
+                }
+                else
+                {
+                    txtUpdates.Visibility = Visibility.Visible;
+                    btnUpdate.Content = "Update";
+                }
             }));
         }
 
@@ -478,6 +558,7 @@ namespace Media_Download
 
             SettingsIconLoad.Visibility = Visibility.Visible;
             SettingsIconTick.Visibility = Visibility.Hidden;
+            SettingsIconCross.Visibility = Visibility.Hidden;
             btnUpdate.Content = "Checking For Updates";
 
             Dispatcher.InvokeAsync(() => UpdateYoutubeDL(UpdateFinished));
