@@ -111,3 +111,4 @@ D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Do
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download.csproj.CopyComplete
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download.exe
 D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download.pdb
+D:\Mark Diedericks\Documents\Visual Studio 2019\Projects\Media Download\Media Download\obj\Release\Media Download.csprojAssemblyReference.cache
