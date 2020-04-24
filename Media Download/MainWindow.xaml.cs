@@ -290,9 +290,10 @@ namespace Media_Download
                 {
                     FileName = location,
                     Arguments = "--update",
-                    UseShellExecute = false,
+                    UseShellExecute = true,
                     CreateNoWindow = true,
-                    WindowStyle = ProcessWindowStyle.Hidden
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    Verb = "runas"
                 };
 
                 Process cmdUpdate = Process.Start(cmdsi);
